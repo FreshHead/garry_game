@@ -1,10 +1,8 @@
-import {getCor, getPosClass, isNear, replacePosClass, getRandomInt, Position} from "./utils.js";
-import {findRhombuses} from "./rhombus.js";
-import {findLine} from "./3inRow.js";
+import {colors, getCor, getPosClass, isNear, replacePosClass, getRandomInt, Position} from "./utils.js";
+import {findLine} from "./line.js";
 
 export let generateField, addTile, destroy, onClick, findFigures;
 
-// findFigures = findRhombuses;
 findFigures = findLine;
 generateField = () => {
     let gameField = $('#gameField');
@@ -17,17 +15,13 @@ generateField = () => {
     });
 };
 
-addTile = (cssPosClass) => $('#gameField').append(`<div class='tile ${generateColor()} ${cssPosClass}'/>`);
+addTile = (cssPosClass) => {
+    let food = generateFood();
+    $('#gameField').append(`<img src="./img/${food}.svg" class='tile ${cssPosClass} ${food}'/>`)
+};
 
-function generateColor() {
-    switch (getRandomInt(3)) {
-        case 0:
-            return "gold";
-        case 1:
-            return "silver";
-        case 2:
-            return "violet"
-    }
+function generateFood(){
+    return colors[getRandomInt(5)];
 }
 
 let prevTile;
@@ -58,7 +52,6 @@ onClick = () => {
 destroy = (coordinateList) => {
     coordinateList.forEach(coordinate => {
         let tile = $(`.pos_x${coordinate.x}_y${coordinate.y}`);
-        // tile.addClass("matched");
         tile.remove();
     });
 };
