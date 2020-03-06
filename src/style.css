@@ -1,0 +1,79 @@
+body {
+    background: white;
+    color: #323232;
+    font-weight: 300;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: Helvetica neue, roboto;
+}
+
+img {
+    width: 56px;
+    height: 48px;
+}
+
+h1 {
+    font-weight: 200;
+    font-style: 26px;
+    margin: 10px;
+}
+
+#gameField {
+    /* background-color: blue; */
+    width: 300px;
+    height: 300px;
+}
+
+.tile {
+    position: absolute;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%; /* Circle tile */
+}
+
+.gold {
+    background-color: gold;
+}
+
+.silver {
+    background-color: silver;
+}
+
+.violet {
+    background-color: darkviolet;
+}
+
+.matched {
+    opacity: 0.5
+}
+
+/* Классы позиций на доске */
+.pos_x0_y0{left: 80px; top: 100px;}
+.pos_x1_y0{left: 120px; top: 100px;}
+.pos_x2_y0{left: 160px; top: 100px;}
+.pos_x3_y0{left: 200px; top: 100px;}
+.pos_x4_y0{left: 240px; top: 100px;}
+.pos_x0_y1{left: 80px; top: 140px;}
+.pos_x1_y1{left: 120px; top: 140px;}
+.pos_x2_y1{left: 160px; top: 140px;}
+.pos_x3_y1{left: 200px; top: 140px;}
+.pos_x4_y1{left: 240px; top: 140px;}
+.pos_x0_y2{left: 80px; top: 180px;}
+.pos_x1_y2{left: 120px; top: 180px;}
+.pos_x2_y2{left: 160px; top: 180px;}
+.pos_x3_y2{left: 200px; top: 180px;}
+.pos_x4_y2{left: 240px; top: 180px;}
+.pos_x0_y3{left: 80px; top: 220px;}
+.pos_x1_y3{left: 120px; top: 220px;}
+.pos_x2_y3{left: 160px; top: 220px;}
+.pos_x3_y3{left: 200px; top: 220px;}
+.pos_x4_y3{left: 240px; top: 220px;}
+.pos_x0_y4{left: 80px; top: 260px;}
+.pos_x1_y4{left: 120px; top: 260px;}
+.pos_x2_y4{left: 160px; top: 260px;}
+.pos_x3_y4{left: 200px; top: 260px;}
+.pos_x4_y4{left: 240px; top: 260px;}
