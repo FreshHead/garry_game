@@ -17,7 +17,7 @@ generateField = () => {
 
 addTile = (cssPosClass) => {
     let food = generateFood();
-    $('#gameField').append(`<img src="./img/${food}.svg" alt="${food} image" class='tile ${cssPosClass} ${food}'/>`)
+    $('#gameField').append(`<img src="./img/tiles/${food}.svg" alt="${food} image" class='tile ${cssPosClass} ${food}'/>`)
 };
 
 function generateFood() {
@@ -53,9 +53,10 @@ onClick = () => {
 destroy = (coordinateList) => {
     coordinateList.forEach(coordinate => {
         let tile = $(`.pos_x${coordinate.x}_y${coordinate.y}`);
+
         tile.animate({
-                left: "300px",
-                top: "100px",
+                left: "10vw",
+                top: "-32vh",
             }, "slow",
             () => tile.remove());
     });

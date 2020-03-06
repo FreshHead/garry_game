@@ -2,7 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9a892f9c-e428-46a5-ba81-6c1e2b041244" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/img/Garry.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/Garry2.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/apple.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/tiles/apple.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/cheese.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/tiles/cheese.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/chicken.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/tiles/chicken.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/lemon.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/tiles/lemon.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/meat.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/tiles/meat.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/pizza.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/tiles/pizza.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/rice.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/tiles/rice.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/shrimp.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/tiles/shrimp.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/sweet.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/tiles/sweet.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/js/field.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/field.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/style.css" afterDir="false" />
     </list>
@@ -43,6 +55,12 @@
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Администратор\IdeaProjects\samurai_game\src\img" />
+      <recent name="C:\Users\Администратор\IdeaProjects\samurai_game\src\img\tiles" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/samurai_game/src/index.html" useBuiltInWebServerPort="true">
       <method v="2" />
@@ -65,7 +83,7 @@
       <updated>1583301089602</updated>
       <workItem from="1583301093848" duration="5307000" />
       <workItem from="1583403498167" duration="20487000" />
-      <workItem from="1583470602034" duration="22249000" />
+      <workItem from="1583470602034" duration="30872000" />
     </task>
     <task id="LOCAL-00001" summary="Fix bug with rhombus">
       <created>1583495090133</created>
@@ -88,7 +106,14 @@
       <option name="project" value="LOCAL" />
       <updated>1583513145242</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="add animation">
+      <created>1583526052446</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1583526052446</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -99,13 +124,14 @@
     <MESSAGE value="Fix bug with rhombus" />
     <MESSAGE value="add food icons" />
     <MESSAGE value="refactoring" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactoring" />
+    <MESSAGE value="add animation" />
+    <option name="LAST_COMMIT_MESSAGE" value="add animation" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="288" y="0" key="CommitChangelistDialog2" timestamp="1583513144743">
+    <state x="288" y="0" key="CommitChangelistDialog2" timestamp="1583526051223">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="288" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1583513144743" />
+    <state x="288" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1583526051223" />
     <state x="400" y="172" key="FileChooserDialogImpl" timestamp="1583404687691">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -114,10 +140,14 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="120" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1583404952644" />
-    <state x="261" y="80" key="Vcs.Push.Dialog.v2" timestamp="1583513147084">
+    <state x="261" y="80" key="Vcs.Push.Dialog.v2" timestamp="1583526054973">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="261" y="80" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1583513147084" />
+    <state x="261" y="80" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1583526054973" />
+    <state x="541" y="310" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1583529379833">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="541" y="310" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1583529379833" />
     <state x="474" y="46" width="753" height="732" key="find.popup" timestamp="1583484185116">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -130,6 +160,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="236" y="175" width="867" height="597" key="org.intellij.images.editor.actions.BackgroundImageDialog/0.0.1536.824@0.0.1536.824" timestamp="1583404952082" />
+    <state x="341" y="183" key="run.anything.popup" timestamp="1583532797529">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="341" y="183" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1583532797529" />
     <state x="431" y="145" width="840" height="678" key="search.everywhere.popup" timestamp="1583525727467">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
