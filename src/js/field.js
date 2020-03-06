@@ -17,7 +17,7 @@ generateField = () => {
 
 addTile = (cssPosClass) => {
     let food = generateFood();
-    $('#gameField').append(`<img src="./img/${food}.svg" class='tile ${cssPosClass} ${food}'/>`)
+    $('#gameField').append(`<img src="./img/${food}.svg" alt="${food} image" class='tile ${cssPosClass} ${food}'/>`)
 };
 
 function generateFood(){
@@ -40,7 +40,8 @@ onClick = () => {
         }
         prevTile.style.transform = "scale(1)";
         prevTile = null;
-        findFigures().forEach(figure => destroy(figure.points));
+        let figures = findFigures();
+        figures.forEach(figure => destroy(figure.points));
         populate();
     } else {
         prevTile = target;
