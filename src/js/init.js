@@ -1,5 +1,4 @@
-import {generateField, onClick} from './field.js';
-import {findRhombuses} from "./rhombus.js";
+import {generateField, onClick, findFigures} from './field.js';
 
 // TODO: Сделай набросок Гарри на бумаге. Замени шарики на еду.
 // TODO: С помощью setTimeout() заменяй удалённые круги на новые
@@ -11,8 +10,8 @@ import {findRhombuses} from "./rhombus.js";
 
 // Game start
 $('#gameField').on('click', '.tile', onClick);
-let hasRombus = true;
-while(hasRombus) {
+let hasFigure = true;
+while(hasFigure) {
     generateField();
-    hasRombus = findRhombuses().length !== 0;
+    hasFigure = findFigures().length !== 0;
 }

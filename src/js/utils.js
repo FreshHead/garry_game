@@ -10,7 +10,14 @@ getCor = className => {
     return {x: Number(className.match(/x(\d)/)[1]), y: Number(className.match(/y(\d)/)[1])};
 }
 isNear = (pos1, pos2) => Math.abs(pos1.x - pos2.x) <= 1 && Math.abs(pos1.y - pos2.y) <= 1
-getColor = (x, y) => $(`.pos_x${x}_y${y}`)[0].className.match(colors)[0];
+getColor = (x, y) => {
+    let tile = $(`.pos_x${x}_y${y}`)[0];
+    if(tile){
+        return tile.className.match(colors)[0];
+    } else {
+        return "black";
+    }
+}
 isNotMatched = (x, y) => !$(`.pos_x${x}_y${y}`)[0].className.includes("matched");
 getRandomInt = (max) => Math.floor(Math.random() * Math.floor(max));
 

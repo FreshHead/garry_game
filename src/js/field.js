@@ -1,9 +1,11 @@
 import {getCor, getPosClass, isNear, replacePosClass, getRandomInt, Position} from "./utils.js";
 import {findRhombuses} from "./rhombus.js";
+import {findLine} from "./3inRow.js";
 
-export let generateField, addTile, destroy, onClick;
+export let generateField, addTile, destroy, onClick, findFigures;
 
-
+// findFigures = findRhombuses;
+findFigures = findLine;
 generateField = () => {
     let gameField = $('#gameField');
     gameField.empty();
@@ -44,7 +46,8 @@ onClick = () => {
         }
         prevTile.style.transform = "scale(1)";
         prevTile = null;
-        Promise.all(findRhombuses().map(rhombus => destroy(rhombus.points))).then(populate);
+        findFigures().forEach(figure => destroy(figure.points));
+        populate();
     } else {
         prevTile = target;
         prevTile.style.transform = "scale(0.6)";
@@ -53,74 +56,56 @@ onClick = () => {
 
 
 destroy = (coordinateList) => {
-    // let promises = [];
     coordinateList.forEach(coordinate => {
         let tile = $(`.pos_x${coordinate.x}_y${coordinate.y}`);
-        tile.addClass("matched");
-        // let promise = new Promise(resolve => {
-        // setTimeout(() => {
+        // tile.addClass("matched");
         tile.remove();
-        // shiftDown(coordinate).then(resolve);
-        // resolve();
-        // }, 1000);
-        // });
-        // TODO: Попробуй переделать на async await
-        // promises.push(promise);
     });
-    // return Promise.all(promises);
 };
 
 let populate = () => {
-    fillTopRow().then(() => {
+    setTimeout(() => {
+        fillTopRow();
         let holes = findHoles();
         if (holes.length) {
-            // Promise.all(holes.map(hole => shiftDown(hole))).then(populate);
             setTimeout(() => {
                 holes.forEach(hole => shiftDown(hole));
                 populate();
-            }, 1000);
+            }, 250);
         } else {
-            // Promise.all(findRhombuses().forEach(rhombus => destroy(rhombus.points))).then(populate);
-            setTimeout(() => {
-                let rhombuses = findRhombuses();
-                if(rhombuses.length){
-                    rhombuses.forEach(rhombus => destroy(rhombus.points));
+            let figures = findFigures();
+            if (figures.length) {
+                setTimeout(() => {
+                    figures.forEach(figure => destroy(figure.points));
                     populate();
-                }
-            }, 1000);
+                }, 250);
+            }
         }
-    });
+    }, 250);
 };
 
 let shiftDown = (coordinate) => {
-    return new Promise(resolve => {
-            // setTimeout(() => {
-            for (let y = coordinate.y - 1; y >= 0; y--) {
-                let classPos = `pos_x${coordinate.x}_y${y + 1}`;
-                let upperTile = $(`.pos_x${coordinate.x}_y${y}`)[0];
-                if (upperTile) {
-                    replacePosClass(upperTile, classPos);
-                }
-            }
-            resolve();
-            // }, 1000);
+    let tile = $(`.pos_x${coordinate.x}_y${coordinate.y}`)[0];
+    if (tile) {
+        console.info("Попытка сдвинуть не пустую ячейку", tile);
+        return;
+    }
+    for (let y = coordinate.y; y >= 0; y--) {
+        let classPos = `pos_x${coordinate.x}_y${y}`;
+        let upperTile = $(`.pos_x${coordinate.x}_y${y - 1}`)[0];
+        if (upperTile) {
+            replacePosClass(upperTile, classPos);
         }
-    )
+    }
 };
 
 let fillTopRow = () => {
-    return new Promise(resolve => {
-            setTimeout(() => {
-                for (let x = 0; x < 5; x++) {
-                    let posClass = `pos_x${x}_y${0}`;
-                    if (!$("." + posClass)[0]) {
-                        addTile(posClass);
-                    }
-                }
-                resolve();
-            }, 1000);
+    for (let x = 0; x < 5; x++) {
+        let posClass = `pos_x${x}_y${0}`;
+        if (!$("." + posClass)[0]) {
+            addTile(posClass);
         }
-    );
+    }
 };
 
 let findHoles = () => {

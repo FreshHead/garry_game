@@ -1,6 +1,4 @@
-import {getColor, isAllSame} from "./utils.js";
-import {Position} from "./utils.js";
-import {destroy} from "./field.js";
+import {getColor, isAllSame, Position} from "./utils.js";
 
 export let findRhombuses;
 
