@@ -51,6 +51,8 @@ h1 {
     opacity: 0.5
 }
 
+
+
 /* Классы позиций на доске */
 .pos_x0_y0{left: 80px; top: 100px;}
 .pos_x1_y0{left: 120px; top: 100px;}

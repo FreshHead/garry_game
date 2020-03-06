@@ -20,7 +20,7 @@ addTile = (cssPosClass) => {
     $('#gameField').append(`<img src="./img/${food}.svg" alt="${food} image" class='tile ${cssPosClass} ${food}'/>`)
 };
 
-function generateFood(){
+function generateFood() {
     return colors[getRandomInt(5)];
 }
 
@@ -53,7 +53,11 @@ onClick = () => {
 destroy = (coordinateList) => {
     coordinateList.forEach(coordinate => {
         let tile = $(`.pos_x${coordinate.x}_y${coordinate.y}`);
-        tile.remove();
+        tile.animate({
+                left: "300px",
+                top: "100px",
+            }, "slow",
+            () => tile.remove());
     });
 };
 
