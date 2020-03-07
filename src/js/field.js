@@ -2,7 +2,7 @@ import {colors, getCor, getPosClass, isNear, replacePosClass, getRandomInt, Posi
 import {findLine} from "./line.js";
 
 export let generateField, addTile, destroy, onClick, findFigures;
-
+let stepSpeed = 100;
 findFigures = findLine;
 generateField = () => {
     let gameField = $('#gameField');
@@ -38,11 +38,18 @@ onClick = () => {
         } else {
             console.log("Неправильный ход, можно выбирать только соседние круги!");
         }
+        let figures = findFigures();
+        if(figures.length){
+            figures.forEach(figure => destroy(figure.points));
+            populate();
+        } else {
+            console.log("Неправильный ход, не собрано ни одной фигуры!");
+            replacePosClass(target, newPos);
+            replacePosClass(prevTile, prevPos);
+        }
         prevTile.style.transform = "scale(1)";
         prevTile = null;
-        let figures = findFigures();
-        figures.forEach(figure => destroy(figure.points));
-        populate();
+
     } else {
         prevTile = target;
         prevTile.style.transform = "scale(0.6)";
@@ -53,12 +60,20 @@ onClick = () => {
 destroy = (coordinateList) => {
     coordinateList.forEach(coordinate => {
         let tile = $(`.pos_x${coordinate.x}_y${coordinate.y}`);
-
+        let isMobile = window.matchMedia("only screen and (max-width: 768px)").matches;
+        let mouth;
+        if(isMobile){
+            mouth = {left: "10vw", top:"-32vh"}
+        } else {
+            mouth = {left: "4.7vw", top: "-33vh"}
+        }
         tile.animate({
-                left: "10vw",
-                top: "-32vh",
+                left: mouth.left,
+                top: mouth.top,
             }, "slow",
-            () => tile.remove());
+            () => {
+                tile.remove();
+            });
     });
 };
 
@@ -70,17 +85,17 @@ let populate = () => {
             setTimeout(() => {
                 holes.forEach(hole => shiftDown(hole));
                 populate();
-            }, 250);
+            }, stepSpeed);
         } else {
             let figures = findFigures();
             if (figures.length) {
                 setTimeout(() => {
                     figures.forEach(figure => destroy(figure.points));
                     populate();
-                }, 250);
+                }, stepSpeed);
             }
         }
-    }, 250);
+    }, stepSpeed);
 };
 
 let shiftDown = (coordinate) => {

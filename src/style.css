@@ -39,10 +39,20 @@ h1 {
     }
 }
 
-#Garry {
-    position: relative;
+#cf {
+    position:relative;
+    height:100vh;
+    width:100%;
+}
+
+#cf img {
+    height:100vh;
+    width:auto;
+}
+@media screen and (max-width: 768px) {
+    #cf img {
     width: 100%;
-    height: 100vh;
+    }
 }
 
 .tile {
