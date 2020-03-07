@@ -27,4 +27,5 @@ export class Position {
         this.x = x;
         this.y = y;
     }
+    toString = () => `(${this.x}, ${this.y})`;
 }

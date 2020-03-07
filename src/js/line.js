@@ -34,4 +34,5 @@ class Line {
             this.points = [new Position(x, y), new Position(x, y + 1), new Position(x, y + 2)];
         }
     }
+    toString = () => this.points.join("; ");
 }

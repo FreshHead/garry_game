@@ -39,8 +39,7 @@ onClick = () => {
             console.log("Неправильный ход, можно выбирать только соседние круги!");
         }
         let figures = findFigures();
-        if(figures.length){
-            figures.forEach(figure => destroy(figure.points));
+        if (figures.length) {
             populate();
         } else {
             console.log("Неправильный ход, не собрано ни одной фигуры!");
@@ -56,45 +55,56 @@ onClick = () => {
     }
 };
 
+let score = 0;
+let updateScore = (figures) => {
+    score += figures.length * 25;
+    $("#ScoreNum").text(score);
+};
 
 destroy = (coordinateList) => {
-    coordinateList.forEach(coordinate => {
-        let tile = $(`.pos_x${coordinate.x}_y${coordinate.y}`);
-        let isMobile = window.matchMedia("only screen and (max-width: 768px)").matches;
-        let mouth;
-        if(isMobile){
-            mouth = {left: "10vw", top:"-32vh"}
-        } else {
-            mouth = {left: "4.7vw", top: "-33vh"}
-        }
-        tile.animate({
-                left: mouth.left,
-                top: mouth.top,
-            }, "slow",
-            () => {
-                tile.remove();
-            });
+    return new Promise((resolve) => {
+        coordinateList.forEach(coordinate => {
+            let tile = $(`.pos_x${coordinate.x}_y${coordinate.y}`);
+            let isMobile = window.matchMedia("only screen and (max-width: 768px)").matches;
+            let mouth;
+            if (isMobile) {
+                mouth = {left: "10vw", top: "-32vh"}
+            } else {
+                mouth = {left: "4.8vw", top: "-33vh"}
+            }
+            tile.animate({
+                    left: mouth.left,
+                    top: mouth.top,
+                }, "slow",
+                () => {
+                    tile.remove();
+                    resolve();
+                });
+        });
     });
 };
 
 let populate = () => {
     setTimeout(() => {
-        fillTopRow();
-        let holes = findHoles();
-        if (holes.length) {
+    fillTopRow();
+    let holes = findHoles();
+    if (holes.length) {
+        setTimeout(() => {
+        holes.forEach(hole => shiftDown(hole));
+        populate();
+        }, stepSpeed);
+    } else {
+        let figures = findFigures();
+        if (figures.length) {
             setTimeout(() => {
-                holes.forEach(hole => shiftDown(hole));
+            Promise.all(figures.map(figure => destroy(figure.points))).then(()=> {
+                console.info("Фигуры: ", figures.join("\n"));
+                updateScore(figures);
                 populate();
+            });
             }, stepSpeed);
-        } else {
-            let figures = findFigures();
-            if (figures.length) {
-                setTimeout(() => {
-                    figures.forEach(figure => destroy(figure.points));
-                    populate();
-                }, stepSpeed);
-            }
         }
+    }
     }, stepSpeed);
 };
 
