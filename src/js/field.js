@@ -70,7 +70,7 @@ destroy = (coordinateList) => {
             if (isMobile) {
                 mouth = {left: "10vw", top: "-32vh"}
             } else {
-                mouth = {left: "4.8vw", top: "-33vh"}
+                mouth = {left: "4.3vw", top: "-33vh"}
             }
             tile.animate({
                     left: mouth.left,
