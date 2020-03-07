@@ -28,6 +28,7 @@ h1 {
 }
 
 #gameField {
+    z-index: 1;
     position: absolute;
     top: 50vh;
     left: 10vw;
