@@ -8,9 +8,8 @@ require("rollup").rollup({
         // output format - 'amd', 'cjs', 'es6', 'iife', 'umd'
         format: 'iife'
     }).then((result) => {
+        require('gently-copy')(["./src/img", "./src/style.css"], "./dist", {overwrite: true});
         const fs = require('fs');
         fs.writeFileSync("./dist/bundle.js", result.output[0].code);
-        const gentlyCopy = require('gently-copy');
-        gentlyCopy(["./src/img", "./src/style.css"], "./dist", {overwrite: true});
-    });
+        });
 }).then(null, err => console.error(err));
