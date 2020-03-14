@@ -2,7 +2,7 @@ import {colors, getCor, getPosClass, isNear, replacePosClass, getRandomInt, Posi
 import {findLine} from "./line.js";
 
 export let generateField, addTile, destroy, onClick, findFigures;
-let stepSpeed = 100;
+let stepSpeed = 80;
 findFigures = findLine;
 generateField = () => {
     let gameField = $('#gameField');
