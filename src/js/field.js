@@ -28,7 +28,7 @@ let prevTile;
 
 onClick = () => {
     let e = window.event;
-    let target = e.target || e.srcElement;
+    let target = e.target;
     if (prevTile) {
         let prevPos = getPosClass(prevTile);
         let newPos = getPosClass(target);
@@ -64,14 +64,19 @@ let updateScore = (figures) => {
 destroy = (coordinateList) => {
     return new Promise((resolve) => {
         coordinateList.forEach(coordinate => {
-            let tile = $(`.pos_x${coordinate.x}_y${coordinate.y}`);
-            let isMobile = window.matchMedia("only screen and (max-width: 768px)").matches;
+            const tile = $(`.pos_x${coordinate.x}_y${coordinate.y}`);
+            const isMobile = window.matchMedia("only screen and (max-width: 768px)").matches;
             let mouth;
             if (isMobile) {
                 mouth = {left: "10vw", top: "-32vh"}
             } else {
                 mouth = {left: "4.3vw", top: "-33vh"}
             }
+            const harryImg = $("#Harry")[0];
+            harryImg.src = "img/Harry2.jpg";
+            setTimeout(()=>{
+                harryImg.src = "img/Harry.jpg";
+            }, 500);
             tile.animate({
                     left: mouth.left,
                     top: mouth.top,

@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/FreshHead/garry_game.git"
+    "url": "git+https://github.com/FreshHead/Harry_game.git"
   },
   "author": "Alexander Kostarev - UniverAlex@ya.ru",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/FreshHead/garry_game/issues"
+    "url": "https://github.com/FreshHead/Harry_game/issues"
   },
-  "homepage": "https://github.com/FreshHead/garry_game#readme",
+  "homepage": "https://github.com/FreshHead/Harry_game#readme",
   "browserslist": [
     "Firefox > 68"
   ],
@@ -26,7 +26,11 @@
     "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/preset-env": "^7.8.7",
     "gently-copy": "^3.2.0",
+    "rollup": "latest",
     "rollup-plugin-babel": "^4.4.0",
-    "rollup": "latest"
+    "rollup-plugin-node-resolve": "^5.2.0"
+  },
+  "dependencies": {
+    "jquery": "^3.4.1"
   }
 }

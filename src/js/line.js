@@ -1,4 +1,4 @@
-import {getColor, isNotMatched, isAllSame, Position} from "./utils.js";
+import {getColor, isAllSame, Position} from "./utils.js";
 
 export let findLine;
 

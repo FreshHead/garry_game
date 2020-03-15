@@ -18,7 +18,6 @@ getColor = (x, y) => {
         return "black";
     }
 };
-isNotMatched = (x, y) => !$(`.pos_x${x}_y${y}`)[0].className.includes("matched");
 getRandomInt = (max) => Math.floor(Math.random() * Math.floor(max));
 
 
