@@ -1,9 +1,30 @@
 import {colors, getCor, getPosClass, isNear, replacePosClass, getRandomInt, Position} from "./utils.js";
 import {findLine} from "./line.js";
+import {getColor, isAllSame} from "./utils.js";
 
-export let generateField, addTile, destroy, onClick, findFigures;
+export let generateField, startGame, addTile, destroy, onClick, findFigures;
 let stepSpeed = 80;
 findFigures = findLine;
+
+let fullness = 50;
+startGame = () => {
+    let hunger = setInterval(() => {
+        fullness--;
+        $("#ScoreNum").text(fullness);
+        checkGameOver(hunger);
+    }, 1000);
+};
+
+let checkGameOver = (hunger) => {
+    if (fullness >= 100) {
+        clearTimeout(hunger);
+        alert("Победа! Гарри сыт, на какое-то время. Большое спасибо ;)");
+    } else if (fullness <= 0) {
+        clearTimeout(hunger);
+        alert("Вам не удалось накормить Гарри ;(");
+    }
+};
+
 generateField = () => {
     let gameField = $('#gameField');
     gameField.empty();
@@ -40,7 +61,12 @@ onClick = () => {
         }
         let figures = findFigures();
         if (figures.length) {
-            populate();
+            populate().then(() => {
+                if (!isTurnExist()) {
+                    console.log("Нет доступных ходов! Чищу поле");
+                    // TODO: Сделай анимацию как все тайлы падают за экран или в мусорку.
+                }
+            });
         } else {
             console.log("Неправильный ход, не собрано ни одной фигуры!");
             replacePosClass(target, newPos);
@@ -55,10 +81,69 @@ onClick = () => {
     }
 };
 
-let score = 0;
+let isTurnExist = () => {
+    // TODO: Нужно проверить нет ли эл-та снизу или сверху
+    // Элемент, который нужно сдвинуть правее или левее
+    for (let y = 0; y < 5; y++) {
+        for (let x = 0; x < 1; x++) {
+            if (isAllSame([getColor(x, y), getColor(x + 1, y), getColor(x + 3, y)]) ||
+                isAllSame([getColor(x, y), getColor(x + 2, y), getColor(x + 3, y)])) {
+                return true;
+            }
+        }
+    }
+    for (let x = 0; x < 5; x++) {
+        for (let y = 0; y < 1; y++) {
+            if (isAllSame([getColor(x, y), getColor(x, y + 1), getColor(x, y + 3)]) ||
+                isAllSame([getColor(x, y), getColor(x, y + 2), getColor(x, y + 3)])) {
+                return true;
+            }
+        }
+    }
+    // Элемент, который нужно сдвинуть ниже
+    for (let y = 0; y < 4; y++) {
+        for (let x = 0; x < 3; x++) {
+            if (isAllSame([getColor(x, y), getColor(x + 1, y), getColor(x + 2, y + 1)]) ||
+                isAllSame([getColor(x, y), getColor(x + 1, y + 1), getColor(x + 2, y)]) ||
+                isAllSame([getColor(x, y + 1), getColor(x + 1, y), getColor(x + 2, y)])) {
+                return true;
+            }
+        }
+    }
+    for (let x = 0; x < 4; x++) {
+        for (let y = 0; y < 3; y++) {
+            if (isAllSame([getColor(x, y), getColor(x, y + 1), getColor(x + 1, y + 2)]) ||
+                isAllSame([getColor(x, y), getColor(x + 1, y + 1), getColor(x, y + 2)]) ||
+                isAllSame([getColor(x + 1, y), getColor(x, y + 1), getColor(x, y + 2)])) {
+                return true;
+            }
+        }
+    }
+    // Элемент, который нужно сдвинуть выше
+    for (let y = 1; y < 5; y++) {
+        for (let x = 0; x < 3; x++) {
+            if (isAllSame([getColor(x, y), getColor(x + 1, y), getColor(x + 2, y - 1)]) ||
+                isAllSame([getColor(x, y), getColor(x + 1, y - 1), getColor(x + 2, y)]) ||
+                isAllSame([getColor(x, y - 1), getColor(x + 1, y), getColor(x + 2, y)])) {
+                return true;
+            }
+        }
+    }
+    for (let x = 1; x < 5; x++) {
+        for (let y = 0; y < 3; y++) {
+            if (isAllSame([getColor(x, y), getColor(x, y + 1), getColor(x - 1, y + 2)]) ||
+                isAllSame([getColor(x, y), getColor(x - 1, y + 1), getColor(x, y + 2)]) ||
+                isAllSame([getColor(x - 1, y), getColor(x, y + 1), getColor(x, y + 2)])) {
+                return true;
+            }
+        }
+    }
+    return false;
+};
+
 let updateScore = (figures) => {
-    score += figures.length * 25;
-    $("#ScoreNum").text(score);
+    fullness += figures.length * 3;
+    $("#ScoreNum").text(fullness);
 };
 
 destroy = (coordinateList) => {
@@ -74,7 +159,7 @@ destroy = (coordinateList) => {
             }
             const harryImg = $("#Harry")[0];
             harryImg.src = "img/Harry2.jpg";
-            setTimeout(()=>{
+            setTimeout(() => {
                 harryImg.src = "img/Harry.jpg";
             }, 500);
             tile.animate({
@@ -90,27 +175,31 @@ destroy = (coordinateList) => {
 };
 
 let populate = () => {
-    setTimeout(() => {
-    fillTopRow();
-    let holes = findHoles();
-    if (holes.length) {
+    return new Promise(resolve => {
         setTimeout(() => {
-        holes.forEach(hole => shiftDown(hole));
-        populate();
+            fillTopRow();
+            let holes = findHoles();
+            if (holes.length) {
+                setTimeout(() => {
+                    holes.forEach(hole => shiftDown(hole));
+                    populate().then(() => resolve());
+                }, stepSpeed);
+            } else {
+                let figures = findFigures();
+                if (figures.length) {
+                    setTimeout(() => {
+                        Promise.all(figures.map(figure => destroy(figure.points))).then(() => {
+                            console.info("Фигуры: ", figures.join("\n"));
+                            updateScore(figures);
+                            populate().then(() => resolve());
+                        });
+                    }, stepSpeed);
+                } else {
+                    resolve();
+                }
+            }
         }, stepSpeed);
-    } else {
-        let figures = findFigures();
-        if (figures.length) {
-            setTimeout(() => {
-            Promise.all(figures.map(figure => destroy(figure.points))).then(()=> {
-                console.info("Фигуры: ", figures.join("\n"));
-                updateScore(figures);
-                populate();
-            });
-            }, stepSpeed);
-        }
-    }
-    }, stepSpeed);
+    });
 };
 
 let shiftDown = (coordinate) => {

@@ -1,15 +1,31 @@
+/* Set body to fill entire screen.*/
+
 body {
-    background: white;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
+
+
+body {
+    /*background: white;*/
     color: #323232;
     font-weight: 300;
-    height: 100vh;
-    margin: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+    /*height: 100vh;*/
+    /*margin: 0;*/
+    /*display: flex;*/
+    /*align-items: center;*/
+    /*justify-content: center;*/
+    /*text-align: center;*/
     font-family: Helvetica neue, roboto, serif;
-    overflow: hidden;
+    background-image: url('./img/Harry.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 img {
@@ -44,7 +60,7 @@ h1 {
 
 /* Phone*/
 @media only screen
-and (max-device-width: 600px){
+and (max-device-width: 600px) {
     #gameField {
         left: 35%;
     }
@@ -208,30 +224,129 @@ and (max-device-width: 600px){
 }
 
 @media only screen
-and (max-device-width: 600px){
-    .pos_x0_y0{left: 0vw; top: 0vw;}
-    .pos_x1_y0{left: 15vw; top: 0vw;}
-    .pos_x2_y0{left: 30vw; top: 0vw;}
-    .pos_x3_y0{left: 45vw; top: 0vw;}
-    .pos_x4_y0{left: 60vw; top: 0vw;}
-    .pos_x0_y1{left: 0vw; top: 15vw;}
-    .pos_x1_y1{left: 15vw; top: 15vw;}
-    .pos_x2_y1{left: 30vw; top: 15vw;}
-    .pos_x3_y1{left: 45vw; top: 15vw;}
-    .pos_x4_y1{left: 60vw; top: 15vw;}
-    .pos_x0_y2{left: 0vw; top: 30vw;}
-    .pos_x1_y2{left: 15vw; top: 30vw;}
-    .pos_x2_y2{left: 30vw; top: 30vw;}
-    .pos_x3_y2{left: 45vw; top: 30vw;}
-    .pos_x4_y2{left: 60vw; top: 30vw;}
-    .pos_x0_y3{left: 0vw; top: 45vw;}
-    .pos_x1_y3{left: 15vw; top: 45vw;}
-    .pos_x2_y3{left: 30vw; top: 45vw;}
-    .pos_x3_y3{left: 45vw; top: 45vw;}
-    .pos_x4_y3{left: 60vw; top: 45vw;}
-    .pos_x0_y4{left: 0vw; top: 60vw;}
-    .pos_x1_y4{left: 15vw; top: 60vw;}
-    .pos_x2_y4{left: 30vw; top: 60vw;}
-    .pos_x3_y4{left: 45vw; top: 60vw;}
-    .pos_x4_y4{left: 60vw; top: 60vw;}
+and (max-device-width: 600px) {
+    .pos_x0_y0 {
+        left: 0vw;
+        top: 0vw;
+    }
+
+    .pos_x1_y0 {
+        left: 15vw;
+        top: 0vw;
+    }
+
+    .pos_x2_y0 {
+        left: 30vw;
+        top: 0vw;
+    }
+
+    .pos_x3_y0 {
+        left: 45vw;
+        top: 0vw;
+    }
+
+    .pos_x4_y0 {
+        left: 60vw;
+        top: 0vw;
+    }
+
+    .pos_x0_y1 {
+        left: 0vw;
+        top: 15vw;
+    }
+
+    .pos_x1_y1 {
+        left: 15vw;
+        top: 15vw;
+    }
+
+    .pos_x2_y1 {
+        left: 30vw;
+        top: 15vw;
+    }
+
+    .pos_x3_y1 {
+        left: 45vw;
+        top: 15vw;
+    }
+
+    .pos_x4_y1 {
+        left: 60vw;
+        top: 15vw;
+    }
+
+    .pos_x0_y2 {
+        left: 0vw;
+        top: 30vw;
+    }
+
+    .pos_x1_y2 {
+        left: 15vw;
+        top: 30vw;
+    }
+
+    .pos_x2_y2 {
+        left: 30vw;
+        top: 30vw;
+    }
+
+    .pos_x3_y2 {
+        left: 45vw;
+        top: 30vw;
+    }
+
+    .pos_x4_y2 {
+        left: 60vw;
+        top: 30vw;
+    }
+
+    .pos_x0_y3 {
+        left: 0vw;
+        top: 45vw;
+    }
+
+    .pos_x1_y3 {
+        left: 15vw;
+        top: 45vw;
+    }
+
+    .pos_x2_y3 {
+        left: 30vw;
+        top: 45vw;
+    }
+
+    .pos_x3_y3 {
+        left: 45vw;
+        top: 45vw;
+    }
+
+    .pos_x4_y3 {
+        left: 60vw;
+        top: 45vw;
+    }
+
+    .pos_x0_y4 {
+        left: 0vw;
+        top: 60vw;
+    }
+
+    .pos_x1_y4 {
+        left: 15vw;
+        top: 60vw;
+    }
+
+    .pos_x2_y4 {
+        left: 30vw;
+        top: 60vw;
+    }
+
+    .pos_x3_y4 {
+        left: 45vw;
+        top: 60vw;
+    }
+
+    .pos_x4_y4 {
+        left: 60vw;
+        top: 60vw;
+    }
 }
