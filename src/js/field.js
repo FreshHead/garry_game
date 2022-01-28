@@ -1,6 +1,6 @@
-import {colors, getCor, getPosClass, isNear, replacePosClass, getRandomInt, Position} from "./utils.js";
-import {findLine} from "./line.js";
-import {getColor, isAllSame} from "./utils.js";
+import { colors, getCor, getPosClass, isNear, replacePosClass, getRandomInt, Position } from "./utils.js";
+import { findLine } from "./line.js";
+import { getColor, isAllSame } from "./utils.js";
 
 export let generateField, startGame, addTile, destroy, onClick, findFigures;
 let stepSpeed = 80;
@@ -10,7 +10,7 @@ let fullness = 50;
 startGame = () => {
     let hunger = setInterval(() => {
         fullness--;
-        $("#ScoreNum").text(fullness);
+        $("#score").text(fullness);
         checkGameOver(hunger);
     }, 1000);
 };
@@ -141,9 +141,9 @@ let isTurnExist = () => {
     return false;
 };
 
-let updateScore = (figures) => {
+let updatescore = (figures) => {
     fullness += figures.length * 3;
-    $("#ScoreNum").text(fullness);
+    $("#score").text(fullness);
 };
 
 destroy = (coordinateList) => {
@@ -153,19 +153,19 @@ destroy = (coordinateList) => {
             const isMobile = window.matchMedia("only screen and (max-width: 768px)").matches;
             let mouth;
             if (isMobile) {
-                mouth = {left: "10vw", top: "-32vh"}
+                mouth = { left: "10vw", top: "-32vh" }
             } else {
-                mouth = {left: "4.3vw", top: "-33vh"}
+                mouth = { left: "4.3vw", top: "-33vh" }
             }
-            const harryImg = $("#Harry")[0];
-            harryImg.src = "img/Harry2.jpg";
+            const container = document.getElementById("container");
+            container.style.backgroundImage = "url(img/Harry2.jpg)";
             setTimeout(() => {
-                harryImg.src = "img/Harry.jpg";
+                container.style.backgroundImage = "url(img/Harry.jpg)";
             }, 500);
             tile.animate({
-                    left: mouth.left,
-                    top: mouth.top,
-                }, "slow",
+                left: mouth.left,
+                top: mouth.top,
+            }, "slow",
                 () => {
                     tile.remove();
                     resolve();
@@ -190,7 +190,7 @@ let populate = () => {
                     setTimeout(() => {
                         Promise.all(figures.map(figure => destroy(figure.points))).then(() => {
                             console.info("Фигуры: ", figures.join("\n"));
-                            updateScore(figures);
+                            updatescore(figures);
                             populate().then(() => resolve());
                         });
                     }, stepSpeed);

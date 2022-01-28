@@ -10,22 +10,10 @@ html, body {
     overflow: hidden;
 }
 
-
-
 body {
-    /*background: white;*/
     color: #323232;
     font-weight: 300;
-    /*height: 100vh;*/
-    /*margin: 0;*/
-    /*display: flex;*/
-    /*align-items: center;*/
-    /*justify-content: center;*/
-    /*text-align: center;*/
     font-family: Helvetica neue, roboto, serif;
-    background-image: url('./img/Harry.jpg');
-    background-repeat: no-repeat;
-    background-position: center;
 }
 
 img {
@@ -39,8 +27,13 @@ h1 {
     margin: 10px;
 }
 
-.container {
+#container {
     position: relative;
+    max-width: 801px;
+    max-height: 879px;
+    background-image: url('./img/Harry.jpg');
+    background-repeat: no-repeat;
+    margin: 0 auto;
 }
 
 #gameField {
@@ -50,27 +43,17 @@ h1 {
     left: 10vw;
 }
 
-#Score {
+#score {
+    color: wheat;
     position: absolute;
-    z-index: 1;
-    font-size: 1.5rem;
-    left: 35vh;
-    width: 30vw;
+    right: 10px;
+    font-size: 3rem;
 }
 
 /* Phone*/
-@media only screen
-and (max-device-width: 600px) {
+@media only screen and (max-device-width: 600px) {
     #gameField {
         left: 35%;
-    }
-}
-
-/* Desktop*/
-@media screen and (min-width: 768px) {
-    #Score {
-        left: 50vh;
-        font-size: 2rem;
     }
 }
 
@@ -223,8 +206,7 @@ and (max-device-width: 600px) {
     top: 300px;
 }
 
-@media only screen
-and (max-device-width: 600px) {
+@media only screen and (max-device-width: 600px) {
     .pos_x0_y0 {
         left: 0vw;
         top: 0vw;
