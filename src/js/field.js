@@ -6,8 +6,6 @@ export let generateField, addTile, destroy, onClick, findFigures;
 let stepSpeed = 80;
 findFigures = findLine;
 
-let fullness = 50;
-
 generateField = () => {
     let gameField = $('#gameField');
     gameField.empty();
@@ -125,8 +123,11 @@ let isTurnExist = () => {
 };
 
 let updatescore = (figures) => {
-    fullness += figures.length * 3;
-    $("#score").text(fullness);
+    const score = document.getElementById("score");
+    // TODO: 100 очков за тройку и 400 за 4. 1000 за пятёрку.
+    const addedScore = figures.map(figure => Math.pow(figure.points.length, 2))
+        .reduce((sum, figureScore) => sum + figureScore);
+    score.textContent = Number(score.textContent) + addedScore;
 };
 
 destroy = (coordinateList) => {
@@ -138,10 +139,10 @@ destroy = (coordinateList) => {
             if (isMobile) {
                 mouth = { left: "10vw", top: "-32vh" }
             } else {
-                mouth = { left: "290px", top: "-33vh" }
+                mouth = { left: "35px", top: "-350px" }
             }
             const container = document.getElementById("container");
-            container.style.backgroundImage = "url(img/Harry2.jpg)";
+            container.style.backgroundImage = "url(img/Harry2.jpg), url(img/Harry.jpg)";
             setTimeout(() => {
                 container.style.backgroundImage = "url(img/Harry.jpg)";
             }, 500);
