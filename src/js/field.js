@@ -19,7 +19,7 @@ generateField = () => {
 
 addTile = (cssPosClass) => {
     let food = generateFood();
-    $('#gameField').append(`<img src="./img/tiles/${food}.svg" alt="${food} image" class='tile ${cssPosClass} ${food}'/>`)
+    $('#gameField').append(`<img src="./img/tiles/${food}.svg" alt="${food} image" class="tile ${cssPosClass} ${food}" draggable="false"/>`)
 };
 
 function generateFood() {
@@ -45,6 +45,8 @@ onClick = () => {
             populate().then(() => {
                 if (!isTurnExist()) {
                     console.log("Нет доступных ходов! Чищу поле");
+                    
+                    generateField();
                     // TODO: Сделай анимацию как все тайлы падают за экран или в мусорку.
                 }
             });
@@ -139,7 +141,7 @@ destroy = (coordinateList) => {
             if (isMobile) {
                 mouth = { left: "10vw", top: "-32vh" }
             } else {
-                mouth = { left: "35px", top: "-350px" }
+                mouth = { left: "35px", top: "-130px" }
             }
             const container = document.getElementById("container");
             container.style.backgroundImage = "url(img/Harry2.jpg), url(img/Harry.jpg)";
@@ -149,7 +151,7 @@ destroy = (coordinateList) => {
             tile.animate({
                 left: mouth.left,
                 top: mouth.top,
-            }, "slow",
+            }, 400,
                 () => {
                     tile.remove();
                     resolve();

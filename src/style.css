@@ -1,39 +1,21 @@
-/* Set body to fill entire screen.*/
-
 body {
-    margin: 0;
-    box-sizing: border-box;
-}
-
-html, body {
-    height: 100%;
-    overflow: hidden;
-}
-
-body {
-    color: #323232;
-    font-weight: 300;
-    font-family: Helvetica neue, roboto, serif;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-img {
-    width: 56px;
-    height: 48px;
-}
-
 #container {
     position: relative;
+
     width: 801px;
     height: 879px;
-    background-image: url('./img/Harry.jpg');
-    background-repeat: no-repeat;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+
+    background-image: url('./img/Harry.jpg');
+    background-repeat: no-repeat;
 }
 
 #header {
@@ -60,30 +42,21 @@ h1 {
 
 #gameField {
     position: relative;
+
     width: 40vh;
     height: 40vh;
 }
 
-
-
-/* Phone*/
-@media only screen and (max-device-width: 600px) {
-    #gameField {
-        left: 35%;
-    }
-}
-
-@media screen and (max-width: 768px) {
-    #cf img {
-        width: 100%;
-    }
-}
-
 .tile {
-    z-index: 9;
     position: absolute;
+    z-index: 9;
+    
     width: 8vh;
     height: 8vh;
+}
+
+.tile:hover {
+    transform: scale(0.9);
 }
 
 .pos_x0_y0 {
