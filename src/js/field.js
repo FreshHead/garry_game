@@ -2,28 +2,11 @@ import { colors, getCor, getPosClass, isNear, replacePosClass, getRandomInt, Pos
 import { findLine } from "./line.js";
 import { getColor, isAllSame } from "./utils.js";
 
-export let generateField, startGame, addTile, destroy, onClick, findFigures;
+export let generateField, addTile, destroy, onClick, findFigures;
 let stepSpeed = 80;
 findFigures = findLine;
 
 let fullness = 50;
-startGame = () => {
-    let hunger = setInterval(() => {
-        fullness--;
-        $("#score").text(fullness);
-        checkGameOver(hunger);
-    }, 1000);
-};
-
-let checkGameOver = (hunger) => {
-    if (fullness >= 100) {
-        clearTimeout(hunger);
-        alert("Победа! Гарри сыт, на какое-то время. Большое спасибо ;)");
-    } else if (fullness <= 0) {
-        clearTimeout(hunger);
-        alert("Вам не удалось накормить Гарри ;(");
-    }
-};
 
 generateField = () => {
     let gameField = $('#gameField');
@@ -155,7 +138,7 @@ destroy = (coordinateList) => {
             if (isMobile) {
                 mouth = { left: "10vw", top: "-32vh" }
             } else {
-                mouth = { left: "4.3vw", top: "-33vh" }
+                mouth = { left: "290px", top: "-33vh" }
             }
             const container = document.getElementById("container");
             container.style.backgroundImage = "url(img/Harry2.jpg)";
