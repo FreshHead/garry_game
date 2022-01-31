@@ -16,26 +16,36 @@ body {
 
     background-image: url('./img/Harry.jpg');
     background-repeat: no-repeat;
+
+    border: 2px solid black;
+    border-radius: 20px px;
 }
 
 #header {
     width: 100%;
-    display: flex;
-    justify-content: space-around;
 }
 
 h1 {
     color: white;
+    text-align: center;
     text-shadow: black 2px 2px;
 }
 
 #timer {
-    color: rebeccapurple;
-    font-size: 3rem;
+    position: absolute;
+    left: 20px;
+    top: 10px;
+
+    color: black;
+    font-size: 4rem;
 }
 
 #score {
-    color: wheat;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+
+    color: white;
     font-size: 3rem;
 }
 
@@ -49,8 +59,7 @@ h1 {
 
 .tile {
     position: absolute;
-    z-index: 9;
-    
+
     width: 8vh;
     height: 8vh;
 }
@@ -59,254 +68,43 @@ h1 {
     transform: scale(0.9);
 }
 
-.pos_x0_y0 {
-    left: 0px;
-    top: 0px;
+.rule:before {
+    content: "";
+    display: inline-block;
+
+    height: 2rem;
+
+    margin-right: 10px;
+
+    background-image: url(img/tiles/meat.svg);
+    background-size: auto 100%;
 }
 
-.pos_x1_y0 {
-    left: 75px;
-    top: 0px;
+.rule {
+    display: flex;
+    align-items: center;
 }
 
-.pos_x2_y0 {
-    left: 150px;
-    top: 0px;
+#match3:before {
+    width: 6rem;
 }
 
-.pos_x3_y0 {
-    left: 225px;
-    top: 0px;
+#match4:before {
+    width: 8rem;
 }
 
-.pos_x4_y0 {
-    left: 300px;
-    top: 0px;
+#match5:before {
+    width: 10rem;
 }
 
-.pos_x0_y1 {
-    left: 0px;
-    top: 75px;
+dialog {
+    border-radius: 10px;
 }
 
-.pos_x1_y1 {
-    left: 75px;
-    top: 75px;
-}
-
-.pos_x2_y1 {
-    left: 150px;
-    top: 75px;
-}
-
-.pos_x3_y1 {
-    left: 225px;
-    top: 75px;
-}
-
-.pos_x4_y1 {
-    left: 300px;
-    top: 75px;
-}
-
-.pos_x0_y2 {
-    left: 0px;
-    top: 150px;
-}
-
-.pos_x1_y2 {
-    left: 75px;
-    top: 150px;
-}
-
-.pos_x2_y2 {
-    left: 150px;
-    top: 150px;
-}
-
-.pos_x3_y2 {
-    left: 225px;
-    top: 150px;
-}
-
-.pos_x4_y2 {
-    left: 300px;
-    top: 150px;
-}
-
-.pos_x0_y3 {
-    left: 0px;
-    top: 225px;
-}
-
-.pos_x1_y3 {
-    left: 75px;
-    top: 225px;
-}
-
-.pos_x2_y3 {
-    left: 150px;
-    top: 225px;
-}
-
-.pos_x3_y3 {
-    left: 225px;
-    top: 225px;
-}
-
-.pos_x4_y3 {
-    left: 300px;
-    top: 225px;
-}
-
-.pos_x0_y4 {
-    left: 0px;
-    top: 300px;
-}
-
-.pos_x1_y4 {
-    left: 75px;
-    top: 300px;
-}
-
-.pos_x2_y4 {
-    left: 150px;
-    top: 300px;
-}
-
-.pos_x3_y4 {
-    left: 225px;
-    top: 300px;
-}
-
-.pos_x4_y4 {
-    left: 300px;
-    top: 300px;
-}
-
-@media only screen and (max-device-width: 600px) {
-    .pos_x0_y0 {
-        left: 0vw;
-        top: 0vw;
-    }
-
-    .pos_x1_y0 {
-        left: 15vw;
-        top: 0vw;
-    }
-
-    .pos_x2_y0 {
-        left: 30vw;
-        top: 0vw;
-    }
-
-    .pos_x3_y0 {
-        left: 45vw;
-        top: 0vw;
-    }
-
-    .pos_x4_y0 {
-        left: 60vw;
-        top: 0vw;
-    }
-
-    .pos_x0_y1 {
-        left: 0vw;
-        top: 15vw;
-    }
-
-    .pos_x1_y1 {
-        left: 15vw;
-        top: 15vw;
-    }
-
-    .pos_x2_y1 {
-        left: 30vw;
-        top: 15vw;
-    }
-
-    .pos_x3_y1 {
-        left: 45vw;
-        top: 15vw;
-    }
-
-    .pos_x4_y1 {
-        left: 60vw;
-        top: 15vw;
-    }
-
-    .pos_x0_y2 {
-        left: 0vw;
-        top: 30vw;
-    }
-
-    .pos_x1_y2 {
-        left: 15vw;
-        top: 30vw;
-    }
-
-    .pos_x2_y2 {
-        left: 30vw;
-        top: 30vw;
-    }
-
-    .pos_x3_y2 {
-        left: 45vw;
-        top: 30vw;
-    }
-
-    .pos_x4_y2 {
-        left: 60vw;
-        top: 30vw;
-    }
-
-    .pos_x0_y3 {
-        left: 0vw;
-        top: 45vw;
-    }
-
-    .pos_x1_y3 {
-        left: 15vw;
-        top: 45vw;
-    }
-
-    .pos_x2_y3 {
-        left: 30vw;
-        top: 45vw;
-    }
-
-    .pos_x3_y3 {
-        left: 45vw;
-        top: 45vw;
-    }
-
-    .pos_x4_y3 {
-        left: 60vw;
-        top: 45vw;
-    }
-
-    .pos_x0_y4 {
-        left: 0vw;
-        top: 60vw;
-    }
-
-    .pos_x1_y4 {
-        left: 15vw;
-        top: 60vw;
-    }
-
-    .pos_x2_y4 {
-        left: 30vw;
-        top: 60vw;
-    }
-
-    .pos_x3_y4 {
-        left: 45vw;
-        top: 60vw;
-    }
-
-    .pos_x4_y4 {
-        left: 60vw;
-        top: 60vw;
-    }
+footer {
+    margin-bottom: 10px;
+    background-color: white;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
 }

@@ -18,11 +18,27 @@
         </div>
         <div id="gameField"></div>
         <footer>
-            <div>Автор: Костарев Александр</div>
-            <div>Icons made by <a href="https://www.flaticon.com/authors/adib-sulthon" title="Adib Sulthon">Adib
-                    Sulthon</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+            <div>Александр Костарев <a href="mailto:UniverAlex@ya.ru">UniverAlex@ya.ru</a></div>
+            <div>Тайлы с едой нарисовал <a href="https://www.flaticon.com/authors/adib-sulthon"
+                    title="Adib Sulthon">Adib
+                    Sulthon</a></div>
         </footer>
     </div>
+    <dialog id="rules">
+        <h2>Правила игры
+        </h2>
+        <p>Cовмещайте еду, чтобы набрать наибольшее количество очков за 1 минуту.</p>
+        <p id="match3" class="rule"> => 100 очков</p>
+        <p id="match4" class="rule"> => 500 очков</p>
+        <p id="match5" class="rule"> => 2500 очков</p>
+        <p>Ваш результат сохранится в таблице рекордов!</p>
+        <button id="start-game">Вперёд!</button>
+    </dialog>
+    <dialog id="game-over">
+        <h2>Конец игры</h2>
+        <p>Поздравляем вы набрали <b id="final-score">0</b> очков! И заняли <b id="place">?</b> место!</p>
+        <p><a href="./records.html">Таблица рекордов</a></p>
+    </dialog>
 </body>
 
 </html>

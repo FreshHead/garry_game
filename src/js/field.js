@@ -6,8 +6,18 @@ export let generateField, addTile, destroy, onClick, findFigures;
 let stepSpeed = 80;
 findFigures = findLine;
 
+// Создаём классы позиционирования для всех тайлов.
+for (let y = 0; y < 5; y++) {
+    for (let x = 0; x < 5; x++) {
+        const positionStyle = document.createElement("style");
+        positionStyle.innerHTML = `.pos_x${x}_y${y} {left: ${x * 75}px; top: ${y * 75}px}`;
+        document.getElementsByTagName('head')[0].appendChild(positionStyle);
+    }
+}
+
 generateField = () => {
-    let gameField = $('#gameField');
+
+    const gameField = $('#gameField');
     gameField.empty();
     new Array(5).fill(new Array(5).fill(true)).forEach((row, indY) => {
         row.forEach((item, indX) => {
@@ -45,7 +55,7 @@ onClick = () => {
             populate().then(() => {
                 if (!isTurnExist()) {
                     console.log("Нет доступных ходов! Чищу поле");
-                    
+
                     generateField();
                     // TODO: Сделай анимацию как все тайлы падают за экран или в мусорку.
                 }
