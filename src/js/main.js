@@ -4,6 +4,18 @@ import { generateField, onClick, findFigures } from './field.js';
 // TODO: Добавь двойные тайлы, например "двойная отбивная"Они дают в 2 раза больше очков. Это добавит сложности, потому что теперь нужно ставить приоритет им.
 
 document.getElementById("rules").showModal(); // Да, мы можем прописать <dialog open>, но тогда к примеру не будет засерения, осностальной части экрана.
+document.getElementById("test").addEventListener("click", () => {
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", 'http://localhost:5000/records', true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+    xhr.onreadystatechange = function () { // Call a function when the state changes.
+        if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+            // Request finished. Do processing here.
+        }
+    }
+    xhr.send("name=Hello&points=101");
+});
 
 function startGame() {
     const timer = document.getElementById("timer");
