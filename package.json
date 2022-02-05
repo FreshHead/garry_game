@@ -4,8 +4,7 @@
   "description": "Simple game for my dog",
   "main": "index.html",
   "scripts": {
-    "buildBundle": "rollup -c",
-    "build": "node build.js"
+    "start": "node server.mjs"
   },
   "repository": {
     "type": "git",
