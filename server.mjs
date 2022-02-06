@@ -12,8 +12,6 @@ import path from "path";
         filename: "./database.db",
         driver: sqlite3.Database
     });
-    // TODO: Выдай html страничку рекодов?
-
     await db.exec("CREATE TABLE IF NOT EXISTS records (name TEXT, points INTEGER)");
 
     const contentTypesByExtension = {
@@ -25,11 +23,10 @@ import path from "path";
 
     var server = http.createServer(async function (req, res) {
         const url = req.url;
-        if (url === "/records") { //check the URL of the current request
+        if (url === "/records") {
             if (req.method === "GET") {
                 res.writeHead(200, { "Content-Type": "application/json" });
                 const result = await db.all("SELECT * FROM records");
-                console.log(result);
                 res.write(JSON.stringify(result));
                 res.end();
             }
@@ -39,6 +36,37 @@ import path from "path";
                     res.end("ok");
                 });
             }
+        } else if (url === "/records.html") {
+            const records = await db.all("SELECT * FROM records");
+            const recordsRows = records.reduce((acc, record, idx) => acc +
+                `<tr>
+                    <td>${idx + 1}</td>
+                    <td>${record.name}</td>
+                    <td>${record.points}</td>
+                </tr>`
+                , "");
+            res.writeHead(200, {
+                "Content-Type": "text/html"
+            });
+            res.write(`<!DOCTYPE html>
+            <head>
+                <meta charset="UTF-8">
+            </head>
+            <html lang="ru">
+                <body style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                    <h1>Таблица рекордов</h1>
+                    <table>
+                        <tr>
+                            <th>Место</th>
+                            <th>Имя</th>
+                            <th>Очки</th>
+                        </tr>
+                            ${recordsRows}
+                        </tr>
+                    </table>
+                </body>
+            </html>`);
+            res.end();
         } else { // serve static files.
             try {
                 const baseDirectory = "./src";
