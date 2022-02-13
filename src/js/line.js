@@ -1,28 +1,16 @@
-import { getColor, isAllSame, Position } from "./utils.js";
+import { Position } from "./utils.js";
 
 export let findLine;
 
-function isHorizontalLine(x, y) {
-    return isAllSame([getColor(x, y), getColor(x + 1, y), getColor(x + 2, y)]);
-}
-
-function isVerticalLine(x, y) {
-    return isAllSame([getColor(x, y), getColor(x, y + 1), getColor(x, y + 2)]);
-}
-
-findLine = () => {
-    const lines = [];
+const ranges = function () {
     const ranges = [];
-
-    // TODO: Храни клетки поля, чтобы не генерить эти последовательности.
     for (let x = 0; x < 5; x++) {
         let range = [];
-        for (let y = 0; y < 5; x++) {
+        for (let y = 0; y < 5; y++) {
             range.push(new Position(x, y));
         }
         ranges.push(range);
     }
-
     for (let y = 0; y < 5; y++) {
         let range = [];
         for (let x = 0; x < 5; x++) {
@@ -30,27 +18,31 @@ findLine = () => {
         }
         ranges.push(range);
     }
-    console.log(ranges);
-    lines = ranges.reduce(function (acc, item) {
-        const chain = findChainInAxis(acc);
-        if (chain.length > 0) {
-            return acc.push(new Line(chain));
+    return ranges;
+}();
+
+findLine = () => {
+    const lines = ranges.reduce(function (acc, item) {
+        const chain = findChainInRange(item);
+        if (chain.length > 2) {
+            acc.push(new Line(chain));
+            return acc;
         } else {
             return acc;
         }
     }, []);
-    console.log(chain, lines);
-
+    console.log(lines);
 
     return lines;
 };
 
-function findChainInAxis(axisArray) {
-    return axisArray.reduce(function (chain, item) {
-        if (chain.length === 0 || chain[0].getColor() === item.getColor()) {
-            return chain.push(item);
+function findChainInRange(axisArray) {
+    return axisArray.reduce(function (acc, item) {
+        if (acc.length === 0 || acc[0].getColor() === item.getColor()) {
+            acc.push(item);
+            return acc;
         } else {
-            return [];
+            return acc.length > 2 ? acc : [item];
         }
     }, []);
 

@@ -24,12 +24,6 @@ import path from "path";
     var server = http.createServer(async function (req, res) {
         const url = req.url;
         if (url === "/records") {
-            if (req.method === "GET") {
-                res.writeHead(200, { "Content-Type": "application/json" });
-                const result = await db.all("SELECT * FROM records");
-                res.write(JSON.stringify(result));
-                res.end();
-            }
             if (req.method === "POST") {
                 collectRequestData(req, (result) => {
                     db.exec(`INSERT INTO records VALUES ("${result.name}", ${result.score})`);
@@ -37,7 +31,9 @@ import path from "path";
                 });
             }
         } else if (url === "/records.html") {
-            const records = await db.all("SELECT * FROM records");
+            // TODO: остортируй по убыванию очков.
+            // TODO: Добавь дату и время.
+            const records = await db.all("SELECT * FROM records"); 
             const recordsRows = records.reduce((acc, record, idx) => acc +
                 `<tr>
                     <td>${idx + 1}</td>
@@ -64,6 +60,7 @@ import path from "path";
                             ${recordsRows}
                         </tr>
                     </table>
+                    <a href="/">В игру!</a>
                 </body>
             </html>`);
             res.end();
