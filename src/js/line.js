@@ -1,4 +1,4 @@
-import {getColor, isAllSame, Position} from "./utils.js";
+import { getColor, isAllSame, Position } from "./utils.js";
 
 export let findLine;
 
@@ -10,29 +10,55 @@ function isVerticalLine(x, y) {
     return isAllSame([getColor(x, y), getColor(x, y + 1), getColor(x, y + 2)]);
 }
 
-
 findLine = () => {
-    let lines = [];
-    for (let y = 0; y < 5; y++) {
-        for (let x = 0; x < 3; x++) {
-            if (isHorizontalLine(x, y)) {
-                lines.push(new Line(x, y, true));
-            }
-            if (isVerticalLine(y, x)) {
-                lines.push(new Line(y, x, false));
-            }
+    const lines = [];
+    const ranges = [];
+
+    // TODO: Храни клетки поля, чтобы не генерить эти последовательности.
+    for (let x = 0; x < 5; x++) {
+        let range = [];
+        for (let y = 0; y < 5; x++) {
+            range.push(new Position(x, y));
         }
+        ranges.push(range);
     }
+
+    for (let y = 0; y < 5; y++) {
+        let range = [];
+        for (let x = 0; x < 5; x++) {
+            range.push(new Position(x, y));
+        }
+        ranges.push(range);
+    }
+    console.log(ranges);
+    lines = ranges.reduce(function (acc, item) {
+        const chain = findChainInAxis(acc);
+        if (chain.length > 0) {
+            return acc.push(new Line(chain));
+        } else {
+            return acc;
+        }
+    }, []);
+    console.log(chain, lines);
+
+
     return lines;
 };
 
-class Line {
-    constructor(x, y, isHorizontal) {
-        if (isHorizontal) {
-            this.points = [new Position(x, y), new Position(x + 1, y), new Position(x + 2, y)];
+function findChainInAxis(axisArray) {
+    return axisArray.reduce(function (chain, item) {
+        if (chain.length === 0 || chain[0].getColor() === item.getColor()) {
+            return chain.push(item);
         } else {
-            this.points = [new Position(x, y), new Position(x, y + 1), new Position(x, y + 2)];
+            return [];
         }
+    }, []);
+
+}
+
+class Line {
+    constructor(chain) {
+        this.chain = chain;
     }
-    toString = () => this.points.join("; ");
+    toString = () => this.chain.join("; ");
 }

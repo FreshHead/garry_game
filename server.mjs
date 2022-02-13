@@ -12,7 +12,7 @@ import path from "path";
         filename: "./database.db",
         driver: sqlite3.Database
     });
-    await db.exec("CREATE TABLE IF NOT EXISTS records (name TEXT, points INTEGER)");
+    await db.exec("CREATE TABLE IF NOT EXISTS records (name TEXT, score INTEGER)");
 
     const contentTypesByExtension = {
         ".html": "text/html",
@@ -32,7 +32,7 @@ import path from "path";
             }
             if (req.method === "POST") {
                 collectRequestData(req, (result) => {
-                    db.exec(`INSERT INTO records VALUES ("${result.name}", ${result.points})`);
+                    db.exec(`INSERT INTO records VALUES ("${result.name}", ${result.score})`);
                     res.end("ok");
                 });
             }
@@ -42,7 +42,7 @@ import path from "path";
                 `<tr>
                     <td>${idx + 1}</td>
                     <td>${record.name}</td>
-                    <td>${record.points}</td>
+                    <td>${record.score}</td>
                 </tr>`
                 , "");
             res.writeHead(200, {

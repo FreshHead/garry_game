@@ -76,6 +76,7 @@ onClick = () => {
 
 let isTurnExist = () => {
     // TODO: Нужно проверить нет ли эл-та снизу или сверху
+    
     // Элемент, который нужно сдвинуть правее или левее
     for (let y = 0; y < 5; y++) {
         for (let x = 0; x < 1; x++) {
@@ -133,11 +134,16 @@ let isTurnExist = () => {
     }
     return false;
 };
-
+const scoreMap = {
+    3: 100,
+    4: 500,
+    5: 2500
+};
 let updatescore = (figures) => {
     const score = document.getElementById("score");
     // TODO: 100 очков за тройку и 400 за 4. 1000 за пятёрку.
-    const addedScore = figures.map(figure => Math.pow(figure.points.length, 2))
+    // Сейчас не работает, потому что он считает 4 как 2 тройки.
+    const addedScore = figures.map(figure => scoreMap[figure.points.length])
         .reduce((sum, figureScore) => sum + figureScore);
     score.textContent = Number(score.textContent) + addedScore;
 };

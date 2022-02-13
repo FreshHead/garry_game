@@ -34,12 +34,14 @@
         <p id="match5" class="rule"> => 2500 очков</p>
         <p>Ваш результат сохранится в таблице рекордов!</p>
         <button id="start-game">Вперёд!</button>
-        <button id="test">Тест</button>
     </dialog>
     <dialog id="game-over">
         <h2>Конец игры</h2>
-        <p>Поздравляем вы набрали <b id="final-score">0</b> очков! И заняли <b id="place">?</b> место!</p>
-        <p><a href="./records.html">Таблица рекордов</a></p>
+        <p>Поздравляем вы набрали <b id="final-score">0</b> очков!</p>
+        <p>Введите ваше имя, чтобы поспасть в таблицу рекордов</p>
+        <label for="player-name">Имя:</label>
+        <input id="player-name" type="text">
+        <button id="postRecord">В таблицу рекордов!</button>
     </dialog>
 </body>
 

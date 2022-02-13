@@ -7,7 +7,7 @@ isAllSame = (arr) => arr.every((word, idx, arr, nextWord = arr[idx + 1]) => !nex
 getPosClass = elem => elem.className.match(/\bpos_\w*\b/)[0];
 replacePosClass = (elem, newPosClass) => elem.className = elem.className.replace(/\bpos_\w*\b/g, newPosClass);
 getCor = className => {
-    return {x: Number(className.match(/x(\d)/)[1]), y: Number(className.match(/y(\d)/)[1])};
+    return { x: Number(className.match(/x(\d)/)[1]), y: Number(className.match(/y(\d)/)[1]) };
 };
 isNear = (pos1, pos2) => Math.abs(pos1.x - pos2.x) + Math.abs(pos1.y - pos2.y) < 2;
 getColor = (x, y) => {
@@ -27,4 +27,5 @@ export class Position {
         this.y = y;
     }
     toString = () => `(${this.x}, ${this.y})`;
+    getColor = () => getColor(this.x, this.y);
 }
