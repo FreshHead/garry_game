@@ -13,9 +13,13 @@ document.addEventListener("DOMContentLoaded", () => {
         const name = document.getElementById("player-name").value;
         const score = document.getElementById("final-score").textContent;
         xhr.send(`name=${name}&score=${score}`);
-        xhr.onreadystatechange = function () { // Call a function when the state changes.
+        xhr.onreadystatechange = function () {
             if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-                window.location.href = window.location.href.replace("index", "records");
+                if (window.location.href.match("index.html")) { // Если index.html задан явно в урле. Например, http://localhost:8080/index.html
+                    window.location.href = window.location.href.replace("index", "records");
+                } else {
+                    window.location.href += "/records.html";
+                }
             }
         }
     });
