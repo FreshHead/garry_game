@@ -1,13 +1,22 @@
 body {
+    margin: 0px;
+
     display: flex;
     justify-content: center;
     align-items: center;
+
+}
+
+@media only screen and (hover: none) and (pointer: coarse) {
+    body {
+        font-size: 40px;
+    }
 }
 
 #container {
     position: relative;
 
-    height: 95vh;
+    height: 100vh;
     width: 800px;
     display: flex;
     flex-direction: column;
@@ -17,19 +26,18 @@ body {
     background-image: url('./img/Harry.jpg');
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
 
-    border: 2px solid black;
     border-radius: 20px 20px;
 }
 
 @media only screen and (hover: none) and (pointer: coarse) {
-    body {
-        font-size: 40px;
-    }
-
     #container {
         height: 100vh;
         width: 100%;
+
+        background-image: url('./img/Harry_phone.jpg');
+
     }
 }
 
@@ -65,14 +73,28 @@ h1 {
 #gameField {
     position: absolute;
     top: 35vh;
-    width: 20em;
-    height: 20em;
+    width: 500px;
+    height: 500px;
+}
+
+@media only screen and (hover: none) and (pointer: coarse) {
+    #gameField {
+        width: 75vw;
+        height: 75vw;
+    }
 }
 
 .tile {
     position: absolute;
-    width: 4em;
-    height: 4em;
+    width: 100px;
+    height: 100px;
+}
+
+@media only screen and (hover: none) and (pointer: coarse) {
+    .tile {
+        width: 15vw;
+        height: 15vw;
+    }
 }
 
 .tile:hover {

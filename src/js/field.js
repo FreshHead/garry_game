@@ -7,10 +7,15 @@ let stepSpeed = 80;
 findFigures = findLine;
 
 // Создаём классы позиционирования для всех тайлов.
+const isMobile = window.matchMedia("only screen and (hover: none) and (pointer: coarse)").matches; // TODO: из-за глобальности изменения перечитываются только при рефреше страницы. Что неудобно для дебага. Можно по-другому?
 for (let y = 0; y < 5; y++) {
     for (let x = 0; x < 5; x++) {
         const positionStyle = document.createElement("style");
-        positionStyle.innerHTML = `.pos_x${x}_y${y} {left: ${x * 4}em; top: ${y * 4}em}`;
+        if (isMobile) {
+            positionStyle.innerHTML = `.pos_x${x}_y${y} {left: ${x * 15}vw; top: ${y * 15}vw}`;
+        } else {
+            positionStyle.innerHTML = `.pos_x${x}_y${y} {left: ${x * 100}px; top: ${y * 100}px}`;
+        }
         document.getElementsByTagName('head')[0].appendChild(positionStyle);
     }
 }
@@ -152,17 +157,21 @@ destroy = (coordinateList) => {
     return new Promise((resolve) => {
         coordinateList.forEach(coordinate => {
             const tile = $(`.pos_x${coordinate.x}_y${coordinate.y}`);
-            const isMobile = window.matchMedia("only screen and (max-width: 768px)").matches;
             let mouth;
+            let harry, harryEating;
             if (isMobile) {
-                mouth = { left: "10vw", top: "-32vh" }
+                mouth = { left: "30vw", top: "-17vh" }
+                harry = "url(img/Harry_phone.jpg)";
+                harryEating = "url(img/Harry_phone2.jpg)";
             } else {
-                mouth = { left: "35px", top: "-130px" }
+                mouth = { left: "54px", top: "-17vh" } // расположение рта задаём в тех же значениях в каких задан размер фона в css.
+                harry = "url(img/Harry.jpg)";
+                harryEating = "url(img/Harry2.jpg)";
             }
             const container = document.getElementById("container");
-            container.style.backgroundImage = "url(img/Harry2.jpg), url(img/Harry.jpg)";
+            container.style.backgroundImage = harryEating; //TODO: попробуй добавить поверх только открытый рот , url(img/Harry.jpg)"; 
             setTimeout(() => {
-                container.style.backgroundImage = "url(img/Harry.jpg)";
+                container.style.backgroundImage = harry;
             }, 500);
             tile.animate({
                 left: mouth.left,
