@@ -21,6 +21,18 @@ body {
     border-radius: 20px px;
 }
 
+@media screen and (max-width: 800px) {
+    body {
+        font-size: 40px;
+    }
+
+    #container {
+        width: 100vw;
+        height: 100vh;
+        background-size: cover;
+    }
+}
+
 #header {
     width: 100%;
 }
@@ -37,7 +49,7 @@ h1 {
     top: 10px;
 
     color: black;
-    font-size: 4rem;
+    font-size: 4em;
 }
 
 #score {
@@ -46,22 +58,23 @@ h1 {
     top: 10px;
 
     color: white;
-    font-size: 3rem;
+    font-size: 3em;
 }
 
 
 #gameField {
     position: relative;
 
-    width: 40vh;
-    height: 40vh;
+   /*👉 width: 40vh;
+    height: 40vh;👈*/
 }
 
 .tile {
     position: absolute;
-
-    width: 8vh;
-    height: 8vh;
+    width: 2em;
+    height: 2em;
+   /*👉 width: 8vh;
+    height: 8vh;👈*/
 }
 
 .tile:hover {
@@ -72,7 +85,7 @@ h1 {
     content: "";
     display: inline-block;
 
-    height: 2rem;
+    height: 2em;
 
     margin-right: 10px;
 
@@ -86,15 +99,15 @@ h1 {
 }
 
 #match3:before {
-    width: 6rem;
+    width: 6em;
 }
 
 #match4:before {
-    width: 8rem;
+    width: 8em;
 }
 
 #match5:before {
-    width: 10rem;
+    width: 10em;
 }
 
 dialog {
@@ -107,4 +120,8 @@ footer {
     padding: 10px;
     border: 1px solid black;
     border-radius: 5px;
+}
+
+button{
+    font-size: 1.5em;
 }

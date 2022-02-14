@@ -33,7 +33,7 @@ import path from "path";
         } else if (url === "/records.html") {
             // TODO: остортируй по убыванию очков.
             // TODO: Добавь дату и время.
-            const records = await db.all("SELECT * FROM records"); 
+            const records = await db.all("SELECT * FROM records");
             const recordsRows = records.reduce((acc, record, idx) => acc +
                 `<tr>
                     <td>${idx + 1}</td>
@@ -90,9 +90,9 @@ import path from "path";
             }
         }
     });
-
-    server.listen(5000);
-    console.log("Node.js web server at port 5000 is running..")
+    const PORT = process.env.PORT || 8080;
+    server.listen(PORT);
+    console.log(`Node.js web server at port ${PORT} is running..`)
 })()
 
 function collectRequestData(request, callback) {
