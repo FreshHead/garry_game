@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.getElementById("postRecord").addEventListener("click", () => {
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", 'http://localhost:5000/records', true);
+        xhr.open("POST", '/records', true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
         const name = document.getElementById("player-name").value;
@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
         xhr.send(`name=${name}&score=${score}`);
         xhr.onreadystatechange = function () { // Call a function when the state changes.
             if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-                window.location.href += "records.html";
+                window.location.href = window.location.href.replace("index", "records");
             }
         }
     });
