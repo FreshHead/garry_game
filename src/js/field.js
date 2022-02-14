@@ -10,7 +10,7 @@ findFigures = findLine;
 for (let y = 0; y < 5; y++) {
     for (let x = 0; x < 5; x++) {
         const positionStyle = document.createElement("style");
-        positionStyle.innerHTML = `.pos_x${x}_y${y} {left: ${x * 75}px; top: ${y * 75}px}`;
+        positionStyle.innerHTML = `.pos_x${x}_y${y} {left: ${x * 4}em; top: ${y * 4}em}`;
         document.getElementsByTagName('head')[0].appendChild(positionStyle);
     }
 }

@@ -7,8 +7,8 @@ body {
 #container {
     position: relative;
 
-    width: 801px;
-    height: 879px;
+    height: 95vh;
+    width: 800px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -16,20 +16,20 @@ body {
 
     background-image: url('./img/Harry.jpg');
     background-repeat: no-repeat;
+    background-size: cover;
 
     border: 2px solid black;
-    border-radius: 20px px;
+    border-radius: 20px 20px;
 }
 
-@media screen and (max-width: 800px) {
+@media only screen and (hover: none) and (pointer: coarse) {
     body {
         font-size: 40px;
     }
 
     #container {
-        width: 100vw;
         height: 100vh;
-        background-size: cover;
+        width: 100%;
     }
 }
 
@@ -63,18 +63,16 @@ h1 {
 
 
 #gameField {
-    position: relative;
-
-   /*👉 width: 40vh;
-    height: 40vh;👈*/
+    position: absolute;
+    top: 35vh;
+    width: 20em;
+    height: 20em;
 }
 
 .tile {
     position: absolute;
-    width: 2em;
-    height: 2em;
-   /*👉 width: 8vh;
-    height: 8vh;👈*/
+    width: 4em;
+    height: 4em;
 }
 
 .tile:hover {
@@ -122,6 +120,6 @@ footer {
     border-radius: 5px;
 }
 
-button{
+button {
     font-size: 1.5em;
 }

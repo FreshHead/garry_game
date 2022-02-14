@@ -86,7 +86,6 @@ import path from "path";
             } catch (e) {
                 res.writeHead(500);
                 res.end();     // end the response so browsers don"t hang
-                console.log(e.stack);
             }
         }
     });

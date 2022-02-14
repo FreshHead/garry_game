@@ -31,8 +31,6 @@ findLine = () => {
             return acc;
         }
     }, []);
-    console.log(lines);
-
     return lines;
 };
 
