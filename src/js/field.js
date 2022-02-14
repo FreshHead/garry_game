@@ -162,11 +162,11 @@ destroy = (coordinateList) => {
             if (isMobile) {
                 mouth = { left: "30vw", top: "-17vh" }
                 harry = "url(img/Harry_phone.jpg)";
-                harryEating = "url(img/Harry_phone2.jpg)";
+                harryEating = "url(img/Harry_phone2.png), url(img/Harry_phone.jpg)";
             } else {
                 mouth = { left: "54px", top: "-17vh" } // расположение рта задаём в тех же значениях в каких задан размер фона в css.
                 harry = "url(img/Harry.jpg)";
-                harryEating = "url(img/Harry2.jpg)";
+                harryEating = "url(img/Harry2.png), url(img/Harry.jpg)";
             }
             const container = document.getElementById("container");
             container.style.backgroundImage = harryEating; //TODO: попробуй добавить поверх только открытый рот , url(img/Harry.jpg)"; 
