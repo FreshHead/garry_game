@@ -1,4 +1,4 @@
-const version = '0.5';
+const version = '0.6';
 const assetCacheName = `assets-${version}`;
 self.addEventListener("install", event => {
     event.waitUntil(caches.open(assetCacheName).then(cache => {

@@ -160,7 +160,7 @@ destroy = (coordinateList) => {
             let mouth;
             let harry, harryEating;
             if (isMobile) {
-                mouth = { left: "30vw", top: "-17vh" };
+                mouth = { left: "30vw", top: "-19vh" };
                 harry = "url(img/bg_phone.webp)";
                 harryEating = "url(img/open_mouth_phone.png), url(img/bg_phone.webp)";
             } else {
