@@ -1,6 +1,7 @@
-const cacheVersion = '0.2';
+const version = '0.2';
+const assetCacheName = `assets-${version}`;
 self.addEventListener("install", event => {
-    event.waitUntil(caches.open("assets-" + cacheVersion).then(cache => {
+    event.waitUntil(caches.open(assetCacheName).then(cache => {
         console.log("Cache opened!")
         return cache.addAll([
             "/",
@@ -26,6 +27,16 @@ self.addEventListener("install", event => {
     }).catch(error => {
         console.error(error);
     }));
+});
+
+self.addEventListener("activate", event => {
+    event.waitUntil(caches.keys().then(cacheNames => {
+        return Promise.all(cacheNames.map(cacheName => {
+            if (cacheName !== assetCacheName) {
+                return caches.delete(cacheName);
+            }
+        }));
+    }))
 });
 
 self.addEventListener('fetch', (event) => {
