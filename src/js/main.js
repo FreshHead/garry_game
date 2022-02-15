@@ -19,7 +19,6 @@ document.addEventListener("DOMContentLoaded", () => {
         var xhr = new XMLHttpRequest();
         xhr.open("POST", '/records', true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        debugger;
         const score = document.getElementById("final-score").textContent;
         xhr.send(`name=${name}&score=${score}`);
         xhr.onreadystatechange = function () {

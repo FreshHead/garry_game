@@ -49,7 +49,7 @@ import path from "path";
                 <meta charset="UTF-8">
             </head>
             <html lang="ru">
-                <body style="display: flex; flex-direction: column; justify-content: center; align-items: center; font-size: 22px;">
+                <body style="display: flex; flex-direction: column; justify-content: center; align-items: center; font-size: 40px;">
                     <h1>Таблица рекордов</h1>
                     <table>
                         <tr>
