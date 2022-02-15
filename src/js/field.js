@@ -160,16 +160,16 @@ destroy = (coordinateList) => {
             let mouth;
             let harry, harryEating;
             if (isMobile) {
-                mouth = { left: "30vw", top: "-17vh" }
-                harry = "url(img/Harry_phone.jpg)";
-                harryEating = "url(img/Harry_phone2.png), url(img/Harry_phone.jpg)";
+                mouth = { left: "30vw", top: "-17vh" };
+                harry = "url(img/bg_phone.webp)";
+                harryEating = "url(img/open_mouth_phone.png), url(img/bg_phone.webp)";
             } else {
-                mouth = { left: "54px", top: "-17vh" } // расположение рта задаём в тех же значениях в каких задан размер фона в css.
-                harry = "url(img/Harry.jpg)";
-                harryEating = "url(img/Harry2.png), url(img/Harry.jpg)";
+                mouth = { left: "90px", top: "-17vh" };
+                harry = "url(img/bg.webp)";
+                harryEating = "url(img/open_mouth.png), url(img/bg.webp)";
             }
             const container = document.getElementById("container");
-            container.style.backgroundImage = harryEating; //TODO: попробуй добавить поверх только открытый рот , url(img/Harry.jpg)"; 
+            container.style.backgroundImage = harryEating;
             setTimeout(() => {
                 container.style.backgroundImage = harry;
             }, 500);
