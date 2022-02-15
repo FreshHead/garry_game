@@ -11,5 +11,6 @@
     ],
     "name": "Feed the Harry",
     "short_name": "Harry",
-    "start_url": "index.html"
+    "start_url": "index.html",
+    "orientation": "portrait"
 }
